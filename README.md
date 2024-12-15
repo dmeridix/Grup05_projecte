@@ -25,8 +25,20 @@ El objetivo és la creación de un sistema de fichaje para una institución dond
 
 
 
-5. Una vez que ya hemos el registro y ya podemos acceder al apartado para hacer el registro y mirar el historial de registro, procederemos a ver la funcionalidad de esta pagina y como funciona, vemos que una vez dentro hay un apartado que pone 'Instruccions', que nos explicara como hacer el registro y tendremos dos botones, uno que es para ir a la pagina del registro y el otro es para ver el historial para comprobar que se ha hecho el registro correctamente.
+4. Una vez que ya hemos el registro y ya podemos acceder al apartado para hacer el registro y mirar el historial de registro, procederemos a ver la funcionalidad de esta pagina y como funciona, vemos que una vez dentro hay un apartado que pone 'Instruccions', que nos explicara como hacer el registro y tendremos dos botones, uno que es para ir a la pagina del registro y el otro es para ver el historial para comprobar que se ha hecho el registro correctamente.
 ![image](https://github.com/user-attachments/assets/48324844-408c-4b8e-a8fd-80227f9ef46a)
+
+
+
+5.En este apartado una vez que clicamos en la opción registrar nos aparecera nuestro usuario para que se vea que somos nosotros quien hacemos el fichaje, la fecha y hora a la que se hace el fichaje y ponemos si queremos hacer fichaje de entrada o salida.
+![image](https://github.com/user-attachments/assets/0a6ef076-8d08-48b9-bc7c-26deb25b3355)
+
+
+
+6. Y por último tenemos el 'Historia de fichaje que es para confirmar que se ha hecho el fichaje correctamente y llevar un control de nuestros ultimos fichajes.
+![image](https://github.com/user-attachments/assets/3d1aa5a3-c616-4ea0-a226-6a2372103a7e)
+
+
 
 
 
