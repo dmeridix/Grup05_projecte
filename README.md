@@ -26,7 +26,7 @@ El objetivo és la creación de un sistema de fichaje para una institución dond
 
 
 4. Una vez que ya hemos el registro y ya podemos acceder al apartado para hacer el registro y mirar el historial de registro, procederemos a ver la funcionalidad de esta pagina y como funciona, vemos que una vez dentro hay un apartado que pone 'Instruccions', que nos explicara como hacer el registro y tendremos dos botones, uno que es para ir a la pagina del registro y el otro es para ver el historial para comprobar que se ha hecho el registro correctamente.
-![image](https://github.com/user-attachments/assets/48324844-408c-4b8e-a8fd-80227f9ef46a)
+![image](https://github.com/user-attachments/assets/fd72c4b1-b750-4d7e-a091-4b26c578b44e)
 
 
 
