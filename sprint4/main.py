@@ -384,26 +384,70 @@ def read_root():
                 });
             }
 
-            // Buscar fichajes por persona
-            document.getElementById('form-buscar-fichajes').addEventListener('submit', async (event) => {
-                event.preventDefault();
-                const personaId = parseInt(document.getElementById('buscar-persona-id').value, 10);
+// Buscar fichajes por persona
+document.getElementById('form-buscar-fichajes').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const personaId = parseInt(document.getElementById('buscar-persona-id').value, 10);
 
-                const response = await fetch(`${API_URL}/fichajes/${personaId}`);
-                const fichajes = await response.json();
-                const listaFichajes = document.getElementById('lista-fichajes');
-                listaFichajes.innerHTML = '';
+    const response = await fetch(`${API_URL}/fichajes/${personaId}`);
+    const fichajes = await response.json();
+    const listaFichajes = document.getElementById('lista-fichajes');
+    listaFichajes.innerHTML = '';
 
-                if (fichajes.length === 0) {
-                    listaFichajes.textContent = 'No hay fichajes registrados para esta persona.';
-                } else {
-                    fichajes.forEach(fichaje => {
-                        const li = document.createElement('li');
-                        li.textContent = `Tipo: ${fichaje.tipo_fichaje} - Fecha: ${fichaje.fecha_hora}`;
-                        listaFichajes.appendChild(li);
-                    });
-                }
-            });
+    if (fichajes.length === 0) {
+        listaFichajes.textContent = 'No hay fichajes registrados para esta persona.';
+    } else {
+        // Crear una tabla
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+
+        // Encabezados de la tabla
+        thead.innerHTML = `
+            <tr>
+                <th>Tipo</th>
+                <th>Fecha</th>
+            </tr>
+        `;
+
+        // Rellenar filas con datos
+        fichajes.forEach(fichaje => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${fichaje.tipo_fichaje}</td>
+                <td>${new Date(fichaje.fecha_hora).toLocaleString()}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+
+        // Estilo para la tabla
+        table.style.width = '100%';
+        table.style.borderCollapse = 'collapse';
+        table.style.marginTop = '20px';
+        table.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+
+        // Estilo para encabezados y celdas
+        thead.querySelectorAll('th').forEach(th => {
+            th.style.backgroundColor = '#002855';
+            th.style.color = 'white';
+            th.style.padding = '12px';
+            th.style.border = '1px solid #ddd';
+        });
+
+        tbody.querySelectorAll('td').forEach(td => {
+            td.style.padding = '12px';
+            td.style.border = '1px solid #ddd';
+            td.style.backgroundColor = '#f9fafb';
+        });
+
+        // Agregar tabla al contenedor
+        listaFichajes.appendChild(table);
+    }
+});
+
 
             // Inicializar la carga de grupos
             cargarGrupos();
