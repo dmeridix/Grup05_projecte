@@ -23,7 +23,7 @@ class Grupo(BaseModel):
     nombre: str
 
 class Persona(BaseModel):
-    id: int
+    id: Optional[int]
     nombre: str
     edad: int
     grupo_id: int
@@ -44,74 +44,152 @@ def read_root():
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gestión de Fichajes</title>
 <style>
+    /* Estilo base */
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Roboto', 'Arial', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f9f9f9;
+        background-color: #f4f6f9;
         color: #333;
+        line-height: 1.6;
     }
     header {
-        background-color: #0056b3;
+        background: #002855;
         color: white;
-        padding: 20px;
+        padding: 20px 0;
         text-align: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 2rem;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
     main {
-        padding: 20px;
-        max-width: 800px;
+        padding: 40px 20px;
+        max-width: 1200px;
         margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
     section {
-        margin-bottom: 20px;
-        background-color: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
     }
     h2 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        color: #0056b3;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #002855;
+        position: relative;
+    }
+    h2::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 4px;
+        background-color: #00a6ed;
+        margin-top: 5px;
+        border-radius: 4px;
     }
     label {
         display: block;
-        margin-bottom: 5px;
         font-weight: bold;
+        margin-bottom: 8px;
+        color: #555;
     }
     input, select, button {
+        display: block;
         width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
+        padding: 12px;
+        margin-bottom: 20px;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-radius: 6px;
         font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    input:focus, select:focus {
+        border-color: #00a6ed;
+        box-shadow: 0 0 5px rgba(0, 166, 237, 0.4);
+        outline: none;
     }
     button {
-        background-color: #0056b3;
+        background-color: #002855;
         color: white;
         border: none;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
     button:hover {
-        background-color: #003d82;
+        background-color: #00a6ed;
+        transform: translateY(-2px);
     }
     ul {
         list-style-type: none;
         padding: 0;
     }
     li {
-        padding: 10px;
-        margin-bottom: 5px;
-        background-color: #f1f1f1;
-        border-radius: 4px;
+        padding: 12px;
+        margin-bottom: 10px;
+        background-color: #f4f6f9;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    li:hover {
+        background-color: #e3f2fd;
+        transform: translateY(-2px);
+    }
+    /* Estilo adicional para formularios */
+    form {
+        background: #f9fafb;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+    /* Botones */
+    .btn-primary {
+        background-color: #002855;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 1rem;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
-    li:hover {
-        background-color: #e0e0e0;
+    .btn-primary:hover {
+        background-color: #00a6ed;
+    }
+    /* Tablas y listas */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    th, td {
+        text-align: left;
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #002855;
+        color: white;
+    }
+    td {
+        background-color: #f9fafb;
+    }
+    td:hover {
+        background-color: #e0f7fa;
+    }
+    /* Medios responsivos */
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 1.6rem;
+        }
+        button, input, select {
+            font-size: 0.9rem;
+        }
     }
 </style>
     </head>
