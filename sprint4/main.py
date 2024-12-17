@@ -207,7 +207,7 @@ def read_root():
                 // Comprobar si la respuesta es OK
                 if (response.ok) {
                     const fichaje = await response.json();
-                    alert(`Fichaje registrado con éxito: ID ${fichaje.id}`);
+                    alert(`Fichaje registrado con éxito`);
                     document.getElementById('form-fichaje').reset();
                 } else {
                     const error = await response.json();
